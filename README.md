@@ -4,6 +4,9 @@ HireFlow is a responsive job discovery and recruitment workspace built with Next
 
 ## Current demo features
 
+🚀live demo
+https://hireflow-advanced-job-app-recruitment-platform-cymk42fl2okcmxe.streamlit.app/
+
 - Responsive candidate-facing job discovery dashboard
 - Search by job title, company, location text or category
 - Category filters for Engineering, Design, Marketing and Operations
