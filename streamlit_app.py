@@ -85,7 +85,7 @@ with st.sidebar:
     st.metric("Applications", len(applications))
     st.metric("Saved roles", len(saved_ids))
     st.divider()
-    if st.button("↻ Reset sample workspace", use_container_width=True):
+    if st.button("↻ Reset sample workspace", width="stretch"):
         st.session_state.jobs = [dict(job) for job in INITIAL_JOBS]
         st.session_state.applications = [dict(app) for app in INITIAL_APPLICATIONS]
         st.session_state.saved_ids = {2}
@@ -215,7 +215,7 @@ elif view == "Hiring workspace":
     st.dataframe(pd.DataFrame([{
         "Role": job["role"], "Company": job["company"], "Location": job["location"],
         "Category": job["category"], "Type": job["type"], "Posted": job["posted"],
-    } for job in jobs]), use_container_width=True, hide_index=True)
+    } for job in jobs]), width="stretch", hide_index=True)
     with st.expander("＋ Publish a sample job"):
         with st.form("recruiter_job_form", clear_on_submit=True):
             role = st.text_input("Role title")
