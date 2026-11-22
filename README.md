@@ -20,6 +20,19 @@ The current interface uses sample data and React state. Saved jobs, applications
 
 A starter PostgreSQL schema and Row Level Security policies are included at `supabase/schema.sql`. The UI is not connected to Supabase yet.
 
+
+## Streamlit demo
+
+A separate Streamlit version is available alongside the original Next.js app.
+
+- **Demo status:** Not deployed yet — Streamlit Cloud must generate the public URL.
+- **Repository entrypoint:** `streamlit_app.py`
+- **Python dependencies:** `requirements.txt`
+- **Deployment guide:** [docs/streamlit-deployment.md](docs/streamlit-deployment.md)
+- **Deploy:** [Open Streamlit Community Cloud](https://share.streamlit.io)
+
+The Streamlit edition includes job search and filters, saved roles, a candidate application tracker with editable statuses, a recruiter workspace, job-post creation, dashboard metrics and CSV export. It uses illustrative sample data and Streamlit session state; it is not connected to the existing Supabase schema.
+
 ## Tech stack
 
 - Next.js 15 App Router
