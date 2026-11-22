@@ -41,6 +41,7 @@ export default function Home() {
   const [jobs, setJobs] = useState<Job[]>(initialJobs);
   const [activeFilter, setActiveFilter] = useState("All roles");
   const [search, setSearch] = useState("");
+  const [locationSearch, setLocationSearch] = useState("");
   const [saved, setSaved] = useState<number[]>([2]);
   const [applications, setApplications] = useState<Application[]>([
     { id: 101, jobId: 3, role: "Product Marketing Manager", company: "Notion", status: "Interview", applied: "Oct 18" },
@@ -56,9 +57,10 @@ export default function Home() {
     const matchesFilter = activeFilter === "All roles" || job.category === activeFilter;
     const term = search.toLowerCase().trim();
     const matchesSearch = !term || [job.role, job.company, job.location, job.category].join(" ").toLowerCase().includes(term);
+    const matchesLocation = !locationSearch.trim() || job.location.toLowerCase().includes(locationSearch.toLowerCase().trim());
     const matchesTab = activeTab !== "Saved" || saved.includes(job.id);
-    return matchesFilter && matchesSearch && matchesTab;
-  }), [jobs, activeFilter, search, activeTab, saved]);
+    return matchesFilter && matchesSearch && matchesLocation && matchesTab;
+  }), [jobs, activeFilter, search, locationSearch, activeTab, saved]);
 
   function toggleSaved(id: number) {
     setSaved((current) => current.includes(id) ? current.filter((item) => item !== id) : [...current, id]);
@@ -203,7 +205,7 @@ export default function Home() {
               <section className="search-panel">
                 <div className="search-field"><span>⌕</span><input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Job title, keyword or company" aria-label="Search jobs" /></div>
                 <div className="search-divider" />
-                <div className="location-field"><span>⌖</span><input placeholder="City or remote" aria-label="Location" onChange={(e) => { if (e.target.value) setSearch((s) => s); }} /></div>
+                <div className="location-field"><span>⌖</span><input value={locationSearch} onChange={(e) => setLocationSearch(e.target.value)} placeholder="City or remote" aria-label="Location" /></div>
                 <button className="search-button" onClick={() => setNotice(visibleJobs.length + " matching roles found.")}>Search jobs <span>→</span></button>
               </section>
 
