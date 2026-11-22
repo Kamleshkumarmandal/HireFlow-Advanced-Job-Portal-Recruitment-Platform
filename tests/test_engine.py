@@ -27,7 +27,7 @@ class HireFlowEngineTests(unittest.TestCase):
 
     def test_saved_only_filter(self):
         jobs = filter_jobs(INITIAL_JOBS, saved_ids={2, 4}, saved_only=True)
-        self.assertEqual({job["id"] for job in jobs}, {2})
+        self.assertEqual({job["id"] for job in jobs}, {2, 4})
 
     def test_validate_job_post_requires_fields(self):
         valid, message = validate_job_post("", "Acme", "Remote", "Engineering")
